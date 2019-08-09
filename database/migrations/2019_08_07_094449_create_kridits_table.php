@@ -15,14 +15,18 @@ class CreateKriditsTable extends Migration
     {
         Schema::create('kridits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kode');
-            $table->foreign('No_KTP')->references('No_KTP')->on('pembelis')->onDelete('cascade');
-            $table->foreign('paket_kode')->references('paket_code')->on('pakets')->onDelete('cascade');
-            $table->foreign('motor_kode')->references('motor_code')->on('');
+            $table->string('kridit_kode');
+            $table->bigInteger('pembeli_No_KTP')->unsigned();
+            $table->foreign('pembeli_No_KTP')->references('id')->on('kridits');
+            $table->bigInteger('paket_kode')->unsigned();
+            $table->foreign('paket_kode')->references('id')->on('kridits');
+            $table->bigInteger('motor_kode')->unsigned();
+            $table->foreign('motor_kode')->references('id')->on('kridits');
             $table->date('kridit_tanggal');
-            $table->boolean('fotokopi_KTP');
-            $table->boolean('fotokopi_KK');
-            $table->boolean('fotokopi_slip_gaji');
+            $table->binary('fotokopi_KTP');
+            $table->binary('fotokopi_KK');
+            $table->binary('fotokopi_slip_gaji');
+
             $table->timestamps();
         });
     }

@@ -15,13 +15,13 @@ class CreateCicilansTable extends Migration
     {
         Schema::create('cicilans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kode');
-            $table->string('kridit_code');
-            $table->date('cicilan_tanggal');
-            $table->Integer('cicilan_jumlah');
-            $table->Integer('cicilan_ke');
-            $table->Integer('cicilan-sisa_ke');
-            $table->double('cicilan-sisa_harga');
+            $table->string('cicilan_kode');
+            $table->bigInteger('kridit_code')->unsigned();
+            $table->foreign('kridit_code')->references('id')->on('cicilans');
+            $table->bigInteger('cicilan_jumlah')->unsigned();
+            $table->foreign('cicilan_jumlah')->references('id')->on('cicilans');
+            $table->date('cicilan_sisa_ke');
+            $table->double('cicilan_sisa_harga');
             $table->timestamps();
         });
     }

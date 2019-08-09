@@ -17,11 +17,10 @@ class CreateMotorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('motor_kode');
             $table->string('motor_merk');
-            $table->date('cicilan_tanggal');
-            $table->Integer('cicilan_jumlah');
-            $table->Integer('cicilan_ke');
-            $table->Integer('cicilan-sisa_ke');
-            $table->double('cicilan-sisa_harga');
+            $table->string('motor_type');
+            $table->string('motor_warna_pilihan');
+            $table->string('motor_harga');
+            $table->binary('motor_gambar');
             $table->timestamps();
         });
     }

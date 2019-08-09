@@ -15,12 +15,12 @@ class CreatePaketsTable extends Migration
     {
         Schema::create('pakets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kode');
-            $table->double('harga_cash');
-            $table->double('uang_muka');
-            $table->Integer('jumlah_cicilan');
-            $table->double('bunga');
-            $table->double('nilai_cicilan');
+            $table->string('paket_kode');
+            $table->double('paket_harga_cash');
+            $table->double('paket_uang_muka');
+            $table->bigInteger('paket_jumlah_cicilan');
+            $table->double('paket_bunga');
+            $table->double('paket_nilai_cicilan');
             $table->timestamps();
         });
     }
