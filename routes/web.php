@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Auth::routes(['register' => true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['prefix' => 'user','middleware' => ['auth','role:superadmin']], function(){
-    Route::get('/', function(){
-        return 'ini halaman Backend';
-    });
-    Route::resource('user','UserController');
-}); 
+
+Route::group(
+    ['prefix' => 'admin', 'middlewae' => ['auth','role:admin']],
+    function () {
+        Route::get('/',function (){
+            return view('admin.index');
+        });
+    }
+);
