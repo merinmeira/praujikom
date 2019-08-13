@@ -38,7 +38,7 @@
                         @else
                         @role('admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Menu Super Admin') }}</a>
+                            <a class="nav-link" href="/">{{ __('Menu Admin') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">{{ __('Menu Admin') }}</a>
