@@ -34,21 +34,14 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @guest
-                        <span>Silahkan Login Untuk Masuk</span>
+                        <span>Masuk</span>
                         @else
                         @role('admin')
                         <li class="nav-item">
                             <a class="nav-link" href="/">{{ __('Menu Admin') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Menu Admin') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Menu User') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Menu Global User') }}</a>
-                        </li>
+                            <a class="nav-link" href="/admin/kategori">{{ __('Menu Admin') }}</a>
                         @endrole
                         @endguest
                     </ul>
