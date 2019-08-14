@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Role;
+
 
 class UserController extends Controller
 {
@@ -13,7 +16,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        $response = [
+            'success' => true,
+            'data' => $user,
+            'message' => 'Berhasil Ditampilkan'
+        ];
+        return response()->json($response, 200);
     }
 
     /**
@@ -34,7 +43,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        $namaRole = 'superadmin'; //Disini dideskripsikan nama rolenya yang akan dipilih
+        $role = Role::where('name', $namaRole)->first();
+        
+        $user->attachRole($role);
+        return response()->json('berhasil');
     }
 
     /**
@@ -45,7 +63,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $response = [
+            'success' => true,
+            'data' => $user,
+            'message' => 'Berhasil Ditampilkan'
+        ];
+        return response()->json($response, 200);    
     }
 
     /**
