@@ -44,10 +44,10 @@
                     {{-- - --}}
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="/">Menu Member</a>
+                                <a class="nav-link" href="/home/pembeli">Menu Member</a>
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="/">Menu Member</a>
+                                    <a class="nav-link" href="/home/bayar_cicilan">Menu admin</a>
                             </li>
                     @endguest
                 

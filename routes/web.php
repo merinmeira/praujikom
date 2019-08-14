@@ -15,18 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+    Route::resource('user', 'UserController');
+    Route::resource('pembeli', 'PembeliController');
+});
 
-Route::group(
-    ['prefix' => 'admin', 'middlewae' => ['auth','role:admin']],
-    function () {
-        Route::get('/',function (){
-            return view('admin.index');
-        });
-    }
-);
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

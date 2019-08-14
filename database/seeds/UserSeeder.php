@@ -15,16 +15,16 @@ class UserSeeder extends Seeder
     {
         
         //Membuat Role Admin
-        $adminRole = new Role();
-        $adminRole->name ="admin";
-        $adminRole->display_name="Admin";
-        $adminRole->save();
+        // $adminRole = new Role();
+        // $adminRole->name ="admin";
+        // $adminRole->display_name="Admin";
+        // $adminRole->save();
 
         $admin = new User();
         $admin->name='Admin';
-        $admin->email='admin@gmail.com';
+        $admin->email='admin@email.com';
         $admin->password=bcrypt('rahasia');
         $admin->save();
-        $admin->attachRole($adminRole);
+        $admin->attachRole(Role::where('name', 'admin')->first());
     }
 }

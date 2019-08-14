@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pembeli;
 
 class PembeliController extends Controller
 {
@@ -13,7 +14,8 @@ class PembeliController extends Controller
      */
     public function index()
     {
-        //
+        $pembeli = Pembeli::all();
+    	return view('backend.pembeli.index', compact('pembeli'));
     }
 
     /**
