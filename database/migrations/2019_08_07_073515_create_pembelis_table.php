@@ -15,11 +15,11 @@ class CreatePembelisTable extends Migration
     {
         Schema::create('pembelis', function (Blueprint $table) {
             $table->bigIncrements('id'); 
-            $table->bigInteger('pembeli_No_KTP');
-            $table->string('pembeli_nama');
-            $table->string('pembeli_alamat');
-            $table->bigInteger('pembeli_telepone');
-            $table->Integer('Pembeli_hp');
+            $table->bigInteger('No_KTP');
+            $table->string('Nama_pembeli');
+            $table->string('Alamat_pembeli');
+            $table->bigInteger('Telepone');
+            $table->Integer('Pembeli_HP');
             $table->timestamps();
         });
     }

@@ -1,49 +1,47 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-        <title>Tutorial Laravel #21 : CRUD Eloquent Laravel - www.malasngoding.com</title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="card mt-5">
-                <div class="card-header text-center">
-                    CRUD Data Pegawai - <a href="https://www.malasngoding.com/category/laravel" target="_blank">www.malasngoding.com</a>
-                </div>
-                <div class="card-body">
-                    <a href="/pembeli/tambah" class="btn btn-primary">Input Pembeli</a>
-                    <br/>
-                    <br/>
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Halaman pembeli Berita</div>
+                <br>
+                <center><a href="{{ route('pembeli.create') }}" class="btn btn-primary">Tambah</a></center>
+                    <br>
+                    <div class="table-responsive">
+                        <table class="table">
                             <tr>
-                                <th>No_KTP</th>
-                                <th>Nama</th>
-                                <th>Alamat</th>
+                            <th>No_KTP</th>
+                                <th>Nama Pembeli</th>
+                                <th>Alamat pembeli</th>
                                 <th>Telepone</th>
                                 <th>Pembeli_HP</th>
+                                <th clospan="3" style="text-align: center;">Aksi</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($pembeli as $data)
-                            <tr>
-                                <td>{{ $data->No_KTP }}</td>
-                                <td>{{ $data->Nama }}</td>
-                                <td>{{ $data->Alamat }}</td>
-                                <td>{{ $data->Telepone }}</td>
-                                <td>{{ $data->Pembeli_HP }}</td>
-                                <td>
-                                    <a href="/pembeli/edit/{{ $p->id }}" class="btn btn-warning">Edit</a>
-                                    <a href="/pembeli/hapus/{{ $p->id }}" class="btn btn-danger">Hapus</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>      
+                @php $no =1; @endphp
+                @foreach($pembeli as $data)
+                <tr>
+                <td>{{ $data->No_KTP }}</td>
+                <td>{{ $data->Nama_pembeli}}</td>
+                <td>{{ $data->Alamat_pembeli }}</td>
+                <td>{{ $data->Telepone }}</td>
+                <td>{{ $data->Pembeli_HP }}</td>
+                <td>
+                    <td><img src="{{ asset('assets/img/pembeli/'.$data->pembeli_gambar)}}" width="100"></td>
+                    <td><a href="{{ route('pembeli.edit', $data->id) }}" class="btn btn-warning">Edit</a></td>
+                    <td><a href="{{ route('pembeli.show', $data->id) }}" class="btn btn-success">Detail Data</a></td>
+                    <td><form action="{{ route('pembeli.destroy', $data->id) }}" method="post">
+                    {{ csrf_field() }}
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn -sm btn-danger" type="submit">Hapus Data</button>
+                    </form>
+                    </td>
+                </tr>
+                @endforeach
+                </table>
+            </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+@endsection
