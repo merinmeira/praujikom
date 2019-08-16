@@ -38,13 +38,14 @@ class PembeliController extends Controller
      */
     public function store(Request $request)
     {
-        $pembeli = new Pembeli();
-        $pembeli->No_KTP = $request->No_KTP;
-        $pembeli->Nama_pembeli = $request->Nama_pembeli;
-        $pembeli->Alamat_pembeli = $request->Alamat_pembeli;
-        $pembeli->Telepone = $request->Telepone;
-        $pembeli->Pembeli_HP = $request->Pembeli_HP;
-        $pembeli->save();
+        $motor = new Pembeli();
+        $motor->No_KTP = $request->No_KTP;
+        $motor->Nama_pembeli = $request->Nama_pembeli;
+        $motor->Alamat_pembeli = $request->Alamat_pembeli;
+        $motor->Telepone = $request->Telepone;
+        $motor->Pembeli_HP = $request->Pembeli_HP;
+        
+        $motor->save();
         return redirect()->route('pembeli.index');
     }
 
@@ -69,7 +70,7 @@ class PembeliController extends Controller
     public function edit($id)
     {
         $pembeli = Pembeli::findOrFail($id);
-        return view('pembeli.edit', compact('pembeli'));
+        return view('backend.pembeli.edit', compact('pembeli'));
     }
 
     /**

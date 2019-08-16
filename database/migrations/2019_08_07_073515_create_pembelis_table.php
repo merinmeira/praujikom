@@ -19,7 +19,7 @@ class CreatePembelisTable extends Migration
             $table->string('Nama_pembeli');
             $table->string('Alamat_pembeli');
             $table->bigInteger('Telepone');
-            $table->Integer('Pembeli_HP');
+            $table->string('Pembeli_HP');
             $table->timestamps();
         });
     }
